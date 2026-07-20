@@ -176,7 +176,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="assets/paper.pdf"
+                <a href="assets/Self_supervised_Frontier_Estimation_IROS_2026_Final_compressed.pdf"
                    class="external-link button is-normal ">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -196,7 +196,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://drive.google.com/file/d/1YwCIFPJ86xBmBjvwOq0Fc8x4AjDz_BxX/view?usp=sharing"
+                <a href="https://drive.google.com/file/d/1nMTh8xaU4cl1gyVGda8aWJpfmJ53GKwO/view?usp=sharing"
                    class="external-link button is-normal ">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -204,7 +204,7 @@
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. TODO: fill in code URL -->
+              <!-- Code Link. TODO: fill in code URL
               <span class="link-block">
                 <a href="#"
                    class="external-link button is-normal ">
@@ -213,7 +213,7 @@
                   </span>
                   <span>Code</span>
                   </a>
-              </span>
+              </span> -->
           </div>
         </div>
       </div>
@@ -245,8 +245,9 @@
         <h2 class="title is-3">Overview</h2>
         <div class="content has-text-justified">
           <p>
-          Standard methods for autonomous navigation in unstructured terrain are prone to myopic behaviors in long-horizon scenarios. The use of metric maps built from LiDAR or cameras provides necessary local geometry and semantic information but is strictly limited by depth sensing range. By discarding data beyond the mapping horizon robots suffer from suboptimal, short-sighted decisions. To recover this lost information, we focus on extracting long-range traversability-aware frontiers directly from first-person-view (FPV) images. By leveraging satellite imagery, we compute the set of feasible navigation paths for a dataset of image/pose pairs and use them to supervise our network, reducing the need for extensive human demonstration data. We demonstrate that this approach significantly improves performance in long-range off-road navigation over existing methods by more than 10% in various offline benchmarks and significantly reduces the number of human interventions incurred in a set of real-world experiments.
-          </p>
+          <!-- Standard methods for autonomous navigation in unstructured terrain are prone to myopic behaviors in long-horizon scenarios. The use of metric maps built from LiDAR or cameras provides necessary local geometry and semantic information but is strictly limited by depth sensing range. By discarding data beyond the mapping horizon robots suffer from suboptimal, short-sighted decisions. To recover this lost information, we focus on extracting long-range <b><i>xtraversability-aware</i></b>traversability-aware frontiers directly from first-person-view (FPV) images. By leveraging satellite imagery, we compute the set of feasible navigation paths for a dataset of image/pose pairs and use them to supervise our network, reducing the need for extensive human demonstration data. We demonstrate that this approach significantly improves performance in long-range off-road navigation over existing methods by more than 10% in various offline benchmarks and significantly reduces the number of human interventions incurred in a set of real-world experiments. -->
+          We propose a method for <b><i>long-range and traversability-aware</b></i> affordance learning and frontier estimation. We generate supervision data by creating satellite traversability maps, supervised using local traversability maps derived from human driving data. From these maps we generate several feasible long-range paths per pose, providing a more thorough set of demonstrations than human data alone. Representing these paths in polar coordinates allows us to supervise in the heading-space, circumventing the issues of depth-estimation noise and failed point tracks that hinder existing image-space methods. We demonstrate that this approach improves performance in long-range off-road navigation by more than 10% in various offline benchmarks and reduces the number of human interventions in a broad set of real-world experiments.
+        </p>
         </div>
       </div>
     </div>
@@ -262,7 +263,7 @@
         <div class="content has-text-justified">
           <img source src="assets/figures/global_trav.png" />
           <p>
-            We start with an off-road driving dataset and generate local traversability maps at each timestep using SALON, registering them together with RTK GPS. In parallel, high-resolution features are extracted from an RGB satellite map using DINOv2 and JAFAR. Using the registered map as supervision, Gaussian Process Regression predicts traversability values for the entire satellite map &mdash; even in areas the robot never visited.
+            We start with an off-road driving dataset and generate local traversability maps at each timestep using SALON, registering them together with RTK GPS. In parallel, high-resolution features are extracted from an RGB satellite map using DINOv2 and JAFAR. Using the registered map as supervision, Gaussian Process Regression predicts traversability values for the entire satellite map, even in areas the robot never visited.
           </p>
         </div>
       </div>
@@ -279,7 +280,7 @@
         <div class="content has-text-justified">
           <img source src="assets/figures/frontier_compute.png" />
           <p>
-            We plan paths on the global traversability map to a set of goals beyond the local mapping range. For each path, we find the furthest point that isn't occluded by lethal terrain and label its heading relative to the vehicle as a viable frontier, with a score based on the traversability of the whole path. This produces a far richer set of supervision than human demonstration alone &mdash; capturing multiple viable frontiers per image.
+            We plan paths on the global traversability map to a set of goals beyond the local mapping range. For each path, we find the furthest point that isn't occluded by lethal terrain and label its heading relative to the vehicle as a viable frontier, with a score based on the traversability of the whole path. This produces a richer source of supervision than human demonstration alone, instead capturing multiple viable frontiers per image.
           </p>
         </div>
       </div>
@@ -330,7 +331,7 @@
     <div class="column is-three-fifths">
       <h2 class="title is-3">Video</h2>
       <div class="publication-video">
-        <iframe src="https://drive.google.com/file/d/1YwCIFPJ86xBmBjvwOq0Fc8x4AjDz_BxX/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1nMTh8xaU4cl1gyVGda8aWJpfmJ53GKwO/preview" width="640" height="480" allow="autoplay"></iframe>
     </div>
   </div>
   </div>
